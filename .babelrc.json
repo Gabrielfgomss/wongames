@@ -12,7 +12,27 @@
       }
     ],
     "@babel/preset-typescript",
-    "@babel/preset-react"
+    ["@babel/preset-react", {"runtime": "automatic"}]
   ],
-  "plugins": []
+  "plugins": [
+    ["babel-plugin-styled-components", 
+      {
+        "ssr": true,
+        "displayName": true
+      }
+    ]
+  ],
+  "env": {
+    "test": {
+      "plugins": [
+        [
+          "babel-plugin-styled-components",
+          {
+            "ssr": false,
+            "displayName": false
+          }
+        ]
+      ]
+    }
+  }
 }
