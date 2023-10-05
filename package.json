@@ -19,7 +19,8 @@
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "styled-components": "^6.0.8"
+    "styled-components": "^6.0.8",
+    "styled-media-query": "^2.1.2"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.22.20",
