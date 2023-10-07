@@ -1,38 +1,44 @@
-import { render, screen } from "@testing-library/react";
-import 'jest-styled-components';
-import Logo from ".";
-import { renderWithTheme } from "../../utils/tests/helpers";
+import { screen } from "@testing-library/react"
+import Logo from "."
+import { renderWithTheme } from "../../utils/tests/helpers"
 
 describe("<Logo />", () => {
   it("should render a white label by dafult", () => {
     renderWithTheme(<Logo />)
-    expect(screen.getByLabelText(/Won Games/i).parentElement)
-    .toHaveStyle({"color": '#FAFAFA'})
+    expect(screen.getByLabelText(/Won Games/i).parentElement).toHaveStyle({
+      color: "#FAFAFA",
+    })
   })
 
   it("should render black when color is passed", () => {
-    renderWithTheme(<Logo color="black"/>)
-    expect(screen.getByLabelText(/Won Games/i).parentElement)
-    .toHaveStyle({"color": '#030517'})
+    renderWithTheme(<Logo color="black" />)
+    expect(screen.getByLabelText(/Won Games/i).parentElement).toHaveStyle({
+      color: "#030517",
+    })
   })
 
   it("should render a normal logo when size is default", () => {
-    renderWithTheme(<Logo/>)
-    expect(screen.getByLabelText(/Won Games/i).parentElement)
-    .toHaveStyle({"width": '11rem'})
+    renderWithTheme(<Logo />)
+    expect(screen.getByLabelText(/Won Games/i).parentElement).toHaveStyle({
+      width: "11rem",
+    })
   })
 
   it("should render a bigger logo", () => {
-    renderWithTheme(<Logo size="large"/>)
-    expect(screen.getByLabelText(/Won Games/i).parentElement)
-    .toHaveStyle({"width": '20rem'})
+    renderWithTheme(<Logo size="large" />)
+    expect(screen.getByLabelText(/Won Games/i).parentElement).toHaveStyle({
+      width: "20rem",
+    })
   })
 
   it("should render a bigger logo without text if hideOnMobile", () => {
     renderWithTheme(<Logo hideOnMobile={true} />)
-    expect(screen.getByLabelText(/Won Games/i).parentElement)
-    .toHaveStyleRule('width', '5.8rem', {
-      media: '(max-width: 768px)'
-    })
+    expect(screen.getByLabelText(/Won Games/i).parentElement).toHaveStyleRule(
+      "width",
+      "5.8rem",
+      {
+        media: "(max-width: 768px)",
+      },
+    )
   })
 })
