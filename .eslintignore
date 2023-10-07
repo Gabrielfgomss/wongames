@@ -1,3 +1,5 @@
 !.storybook
 !.jest
 !generators
+!jest.config.js
+!.lintstagedrc.js
