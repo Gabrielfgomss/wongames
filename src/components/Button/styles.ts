@@ -1,10 +1,10 @@
-import styled, { DefaultTheme } from 'styled-components'
-import { ButtonProps } from '.'
-import { css } from 'styled-components'
+import styled, { DefaultTheme } from "styled-components"
+import { ButtonProps } from "."
+import { css } from "styled-components"
 
-type wrapperProps =  {
+type wrapperProps = {
   hasIcon: boolean
-} & Pick<ButtonProps, 'size' | 'fullWidth'>
+} & Pick<ButtonProps, "size" | "fullWidth">
 
 const wrapperModifiers = {
   small: (theme: DefaultTheme) => css`
@@ -12,7 +12,7 @@ const wrapperModifiers = {
     font-size: ${theme.font.sizes.xsmall};
   `,
   medium: (theme: DefaultTheme) => css`
-    height: 4 rem;
+    height: 4rem;
     font-size: ${theme.font.sizes.small};
     padding: ${theme.spacings.xxsmall} ${theme.spacings.medium};
   `,
@@ -22,20 +22,70 @@ const wrapperModifiers = {
     padding: ${theme.spacings.xxsmall} ${theme.spacings.xlarge};
   `,
   fullWidth: () => css`
-    width:100%;
-  `
+    width: 100%;
+  `,
+  withIcon: (theme: DefaultTheme) => css`
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 1.5rem;
+
+      & + span {
+        margin-left: ${theme.spacings.xxsmall};
+      }
+    }
+  `,
 }
 
 export const Wrapper = styled.button<wrapperProps>`
-  ${({theme , size, fullWidth}) => css`
-    background: linear-gradient(100deg, #ff5f5f, #f062c0, 50%);
+  ${({ theme, size, fullWidth, hasIcon }) => css`
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #ff5f5f 0%, #f062c0 50%);
     color: ${theme.colors.white};
     border: 0;
+    cursor: pointer;
     border-radius: ${theme.border.radius};
     padding: ${theme.spacings.xxsmall};
+    text-decoration: none;
+
+    &:hover {
+      background: linear-gradient(180deg, #e35565 0%, #d958a6 50%);
+    }
 
     ${!!size && wrapperModifiers[size](theme)};
     ${!!fullWidth && wrapperModifiers.fullWidth()};
-
+    ${!!hasIcon && wrapperModifiers.withIcon(theme)};
   `}
-` 
+`
+
+// export const Wrapper = styled(Button)<{
+//   theme: DefaultTheme
+//   size: string
+//   hasIcon: boolean
+//   fullWidth: boolean
+// }>`
+//   ${({ theme, size, fullWidth, hasIcon }) => css`
+//     display: inline-flex;
+//     align-items: center;
+//     justify-content: center;
+//     background: linear-gradient(180deg, #ff5f5f 0%, #f062c0 50%);
+//     color: ${theme.colors.white};
+//     border: 0;
+//     cursor: pointer;
+//     border-radius: ${theme.border.radius};
+//     padding: ${theme.spacings.xxsmall};
+//     text-decoration: none;
+
+//     &:hover {
+//       background: linear-gradient(180deg, #e35565 0%, #d958a6 50%);
+//     }
+
+//     ${!!size && wrapperModifiers[size](theme)};
+//     ${!!fullWidth && wrapperModifiers.fullWidth()};
+//     ${!!hasIcon && wrapperModifiers.withIcon(theme)};
+//   `}
+// `
