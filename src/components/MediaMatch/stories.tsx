@@ -6,5 +6,9 @@ export default {
   component: MediaMatch,
 } as Meta
 
-export const Desktop: StoryObj = () => <MediaMatch greaterThan="medium" >Only on Desktop</MediaMatch>
-export const Mobile: StoryObj = () => <MediaMatch lessThan="medium" >Only on Mobile</MediaMatch>
+export const Desktop: StoryObj = () => (
+  <MediaMatch greaterThan="medium">Only on Desktop</MediaMatch>
+)
+export const Mobile: StoryObj = () => (
+  <MediaMatch lessThan="medium">Only on Mobile</MediaMatch>
+)
