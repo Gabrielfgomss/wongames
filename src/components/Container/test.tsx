@@ -1,5 +1,5 @@
-import theme from "styles/theme"
-import { renderWithTheme } from "utils/tests/helpers"
+import theme from "../../styles/theme"
+import { renderWithTheme } from "../../utils/tests/helpers"
 import { Container } from "."
 
 describe("<Container />", () => {

@@ -4,7 +4,13 @@ exports[`<Ribbon /> should render the text correctly 1`] = `
 .c0 {
   position: absolute;
   top: 1.6rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   font-weight: 600;
   color: #FAFAFA;

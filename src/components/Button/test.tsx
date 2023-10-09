@@ -56,6 +56,5 @@ describe("<Button />", () => {
       "href",
       "/link",
     )
-    // expect(screen.getByTestId("icon")).toBeInTheDocument()
   })
 })
