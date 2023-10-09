@@ -22,6 +22,7 @@
     "polished": "^4.2.2",
     "react": "latest",
     "react-dom": "latest",
+    "react-slick": "^0.29.0",
     "styled-components": "^6.0.8",
     "styled-media-query": "^2.1.2"
   },
@@ -45,6 +46,7 @@
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "@types/react-slick": "^0.23.10",
     "@typescript-eslint/eslint-plugin": "^6.7.3",
     "@typescript-eslint/parser": "^6.7.3",
     "babel-plugin-styled-components": "^2.1.4",
