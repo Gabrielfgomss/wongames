@@ -1,7 +1,6 @@
 import { screen } from "@testing-library/react"
 import Ribbon from "."
 import { renderWithTheme } from "../../utils/tests/helpers"
-import Banner from "../Banner"
 
 describe("<Ribbon />", () => {
   it("should render the text correctly", () => {
@@ -40,26 +39,6 @@ describe("<Ribbon />", () => {
     renderWithTheme(<Ribbon size="small">Best Seller</Ribbon>)
 
     expect(screen.getByText(/Best Seller/i)).toHaveStyle({
-      height: "2.6rem",
-      fontSize: "1.2rem",
-    })
-  })
-
-  it("should render a Ribbon", () => {
-    renderWithTheme(
-      <Banner
-        {...props}
-        ribbon="My Ribbon"
-        ribbonSize="small"
-        ribbonColor="secondary"
-      />,
-    )
-
-    const ribbon = screen.getByText(/My Ribbon/i)
-
-    expect(ribbon).toBeInTheDocument()
-    expect(ribbon).toHaveStyle({ backgroundColor: "#3CD3C1" })
-    expect(ribbon).toHaveStyle({
       height: "2.6rem",
       fontSize: "1.2rem",
     })
