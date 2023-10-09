@@ -18,12 +18,12 @@
   "dependencies": {
     "@styled-icons/material-outlined": "^10.47.0",
     "@styled-icons/remix-fill": "^10.46.0",
-    "next": "latest",
+    "next": "^13.5.4",
     "polished": "^4.2.2",
     "react": "latest",
     "react-dom": "latest",
     "react-slick": "^0.29.0",
-    "styled-components": "^6.0.8",
+    "styled-components": "^5.3.3",
     "styled-media-query": "^2.1.2"
   },
   "devDependencies": {
@@ -47,6 +47,7 @@
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "@types/react-slick": "^0.23.10",
+    "@types/styled-components": "^5.1.28",
     "@typescript-eslint/eslint-plugin": "^6.7.3",
     "@typescript-eslint/parser": "^6.7.3",
     "babel-plugin-styled-components": "^2.1.4",
