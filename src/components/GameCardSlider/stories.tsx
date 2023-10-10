@@ -1,4 +1,4 @@
-import { StoryObj, Meta } from "@storybook/react"
+import { Meta } from "@storybook/react"
 
 import { GameCardProps } from "../GameCard"
 import GameCardSlider from "."
@@ -60,8 +60,10 @@ export default {
   },
 } as Meta
 
-export const Default: StoryObj<GameCardProps[]> = (args) => (
-  <div style={{ maxWidth: "130rem", margin: "0 auto" }}>
-    <GameCardSlider items={args} {...args} />
-  </div>
-)
+export function Default(args: GameCardProps[]) {
+  return (
+    <div style={{ maxWidth: "130rem", margin: "0 auto" }}>
+      <GameCardSlider items={args} {...args} />
+    </div>
+  )
+}

@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react"
+import { Meta, StoryFn } from "@storybook/react"
 import MediaMatch from "."
 
 export default {
@@ -6,9 +6,9 @@ export default {
   component: MediaMatch,
 } as Meta
 
-export const Desktop: StoryObj = () => (
+export const Desktop: StoryFn = () => (
   <MediaMatch greaterThan="medium">Only on Desktop</MediaMatch>
 )
-export const Mobile: StoryObj = () => (
+export const Mobile: StoryFn = () => (
   <MediaMatch lessThan="medium">Only on Mobile</MediaMatch>
 )

@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react/"
+import { Meta, StoryFn } from "@storybook/react/"
 import Highlight, { HighlightProps } from "."
 
 export default {
@@ -13,13 +13,13 @@ export default {
   },
 } as Meta<HighlightProps>
 
-export const Default: StoryObj<HighlightProps> = (args) => (
+export const Default: StoryFn<HighlightProps> = (args) => (
   <div style={{ maxWidth: "104rem" }}>
     <Highlight {...args} />
   </div>
 )
 
-export const WithFloatImage: StoryObj<HighlightProps> = (args) => (
+export const WithFloatImage: StoryFn<HighlightProps> = (args) => (
   <div style={{ maxWidth: "104rem" }}>
     <Highlight {...args} />
   </div>

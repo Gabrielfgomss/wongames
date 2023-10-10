@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react/"
+import { Meta, StoryFn } from "@storybook/react/"
 import Ribbon, { RibbonProps } from "."
 
 export default {
@@ -14,7 +14,7 @@ export default {
   },
 } as Meta<RibbonProps>
 
-export const Default: StoryObj<RibbonProps> = (args) => (
+export const Default: StoryFn<RibbonProps> = (args) => (
   <div
     style={{
       width: "40rem",

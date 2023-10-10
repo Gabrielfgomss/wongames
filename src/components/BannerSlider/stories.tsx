@@ -1,4 +1,4 @@
-import { StoryObj, Meta } from "@storybook/react"
+import { Meta, StoryFn } from "@storybook/react"
 import BannerSlider, { BannerSliderProps } from "."
 
 const items = [
@@ -38,7 +38,7 @@ export default {
   },
 } as Meta
 
-export const Default: StoryObj<BannerSliderProps> = (args) => (
+export const Default: StoryFn<BannerSliderProps> = (args) => (
   <div style={{ maxWidth: "130rem", margin: "0 auto" }}>
     <BannerSlider {...args} />
   </div>

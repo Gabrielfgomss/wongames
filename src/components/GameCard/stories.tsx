@@ -1,4 +1,4 @@
-import { StoryObj, Meta } from "@storybook/react"
+import { StoryFn, Meta } from "@storybook/react"
 import GameCard, { GameCardProps } from "."
 
 export default {
@@ -22,13 +22,13 @@ export default {
   },
 } as Meta
 
-export const Default: StoryObj<GameCardProps> = (args) => (
+export const Default: StoryFn<GameCardProps> = (args) => (
   <div style={{ width: "30rem" }}>
     <GameCard {...args} />
   </div>
 )
 
-export const WithRibbon: StoryObj<GameCardProps> = (args) => (
+export const WithRibbon: StoryFn<GameCardProps> = (args) => (
   <div style={{ width: "30rem" }}>
     <GameCard {...args} />
   </div>

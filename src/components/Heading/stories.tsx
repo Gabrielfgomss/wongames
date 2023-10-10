@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react"
+import { Meta, StoryFn } from "@storybook/react"
 import Heading, { HeadingProps } from "."
 
 export default {
@@ -6,13 +6,13 @@ export default {
   component: Heading,
   argTypes: {
     children: {
-      type: 'string'
-    }
-  }
+      type: "string",
+    },
+  },
 } as Meta
 
-export const Default: StoryObj<HeadingProps> = (args) => <Heading {...args} />
+export const Default: StoryFn<HeadingProps> = (args) => <Heading {...args} />
 
 Default.args = {
-  children: 'Most Populars'
+  children: "Most Populars",
 }

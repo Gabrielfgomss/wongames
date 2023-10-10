@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react"
+import { Meta, StoryFn } from "@storybook/react"
 import Banner, { BannerProps } from "."
 
 export default {
@@ -13,9 +13,9 @@ export default {
   },
 } as Meta
 
-export const Default: StoryObj = (args) => <Banner {...args} />
+export const Default: StoryFn<BannerProps> = (args) => <Banner {...args} />
 
-export const WithRibbon: StoryObj<BannerProps> = (args) => (
+export const WithRibbon: StoryFn<BannerProps> = (args) => (
   <div style={{ maxWidth: "104rem", margin: "0 auto" }}>
     <Banner {...args} />
   </div>

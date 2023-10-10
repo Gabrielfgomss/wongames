@@ -1,4 +1,4 @@
-import { StoryObj, Meta } from "@storybook/react"
+import { StoryFn, Meta } from "@storybook/react"
 import { Settings } from "react-slick"
 import styled from "styled-components"
 
@@ -26,7 +26,7 @@ const Slide = styled.div`
   text-align: center;
 `
 
-export const Horizontal: StoryObj = () => (
+export const Horizontal: StoryFn = () => (
   <Slider settings={settings}>
     <Slide>1</Slide>
     <Slide>2</Slide>
@@ -45,7 +45,7 @@ const verticalSettings: Settings = {
   slidesToShow: 1,
 }
 
-export const Vertical: StoryObj = () => (
+export const Vertical: StoryFn = () => (
   <Slider settings={verticalSettings}>
     <Slide>1</Slide>
     <Slide>2</Slide>

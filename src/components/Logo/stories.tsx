@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryFn } from "@storybook/react"
 
 import Logo, { LogoProps } from "."
 
@@ -12,4 +12,4 @@ export default {
   },
 } as Meta
 
-export const Default: StoryObj<LogoProps> = (args) => <Logo {...args} />
+export const Default: StoryFn<LogoProps> = (args) => <Logo {...args} />
