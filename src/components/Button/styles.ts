@@ -1,15 +1,23 @@
 import styled, { DefaultTheme } from "styled-components"
+import { darken } from "polished"
 import { ButtonProps } from "."
 import { css } from "styled-components"
 
 type wrapperProps = {
   hasIcon: boolean
-} & Pick<ButtonProps, "size" | "fullWidth">
+} & Pick<ButtonProps, "size" | "fullWidth" | "minimal">
 
 const wrapperModifiers = {
   small: (theme: DefaultTheme) => css`
     height: 3rem;
     font-size: ${theme.font.sizes.xsmall};
+  `,
+  minimal: (theme: DefaultTheme) => css`
+    background: none;
+    color: ${theme.colors.primary};
+    &:hover {
+      color: ${darken(0.1, theme.colors.primary)};
+    }
   `,
   medium: (theme: DefaultTheme) => css`
     height: 4rem;
@@ -40,7 +48,7 @@ const wrapperModifiers = {
 }
 
 export const Wrapper = styled.button<wrapperProps>`
-  ${({ theme, size, fullWidth, hasIcon }) => css`
+  ${({ theme, size, fullWidth, hasIcon, minimal }) => css`
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -53,39 +61,13 @@ export const Wrapper = styled.button<wrapperProps>`
     text-decoration: none;
 
     &:hover {
-      background: linear-gradient(180deg, #e35565 0%, #d958a6 50%);
+      background: ${minimal
+        ? "none"
+        : `linear-gradient(180deg, #e35565 0%, #d958a6 50%)`};
     }
-
     ${!!size && wrapperModifiers[size](theme)};
     ${!!fullWidth && wrapperModifiers.fullWidth()};
     ${!!hasIcon && wrapperModifiers.withIcon(theme)};
+    ${!!minimal && wrapperModifiers.minimal(theme)};
   `}
 `
-
-// export const Wrapper = styled(Button)<{
-//   theme: DefaultTheme
-//   size: string
-//   hasIcon: boolean
-//   fullWidth: boolean
-// }>`
-//   ${({ theme, size, fullWidth, hasIcon }) => css`
-//     display: inline-flex;
-//     align-items: center;
-//     justify-content: center;
-//     background: linear-gradient(180deg, #ff5f5f 0%, #f062c0 50%);
-//     color: ${theme.colors.white};
-//     border: 0;
-//     cursor: pointer;
-//     border-radius: ${theme.border.radius};
-//     padding: ${theme.spacings.xxsmall};
-//     text-decoration: none;
-
-//     &:hover {
-//       background: linear-gradient(180deg, #e35565 0%, #d958a6 50%);
-//     }
-
-//     ${!!size && wrapperModifiers[size](theme)};
-//     ${!!fullWidth && wrapperModifiers.fullWidth()};
-//     ${!!hasIcon && wrapperModifiers.withIcon(theme)};
-//   `}
-// `
