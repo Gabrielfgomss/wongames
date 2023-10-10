@@ -1,11 +1,37 @@
-import Logo from "@/components/Logo"
-import { Main } from "@/components/Main"
+import Home from "@/templates/Home"
+import bannersMock from "../components/BannerSlider/mock"
+import gamesMock from "../components/GameCardSlider/mock"
+import highlightMock from "../components/Highlight/mock"
 
-export default function Home() {
-  return (
-    <>
-      <Logo color="black" hideOnMobile />
-      <Main />
-    </>
-  )
+// async function staticData() {
+//   // const staticData = await fetch(`https://...`, { cache: 'force-cache' })
+//   return {
+//     props: {
+//       heading: "Olha, eu aqui!",
+//     },
+//   }
+// }
+
+async function dynamicData() {
+  // const dynamicData = await fetch(`https://...`, { cache: 'no-store' })
+
+  return {
+    props: {
+      banners: bannersMock,
+      newGames: gamesMock,
+      mostPopularHighlight: highlightMock,
+      mostPopularGames: gamesMock,
+      upcommingGames: gamesMock,
+      upcommingHighligth: highlightMock,
+      upcommingMoreGames: gamesMock,
+      freeGames: gamesMock,
+      freeHighligth: highlightMock,
+    },
+  }
+}
+
+export default async function Index() {
+  const { props } = await dynamicData()
+
+  return <Home {...props} />
 }
