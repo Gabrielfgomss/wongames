@@ -19,6 +19,7 @@ export default {
       large: "1.8rem",
       xlarge: "2.0rem",
       xxlarge: "2.8rem",
+      huge: "5.2rem",
     },
   },
   colors: {
@@ -30,6 +31,7 @@ export default {
     lightGray: "#EAEAEA",
     gray: "#8F8F8F",
     darkGray: "#2E2F42",
+    red: "#FF6347",
     lightBg: "#F2F2F2",
   },
   spacings: {
