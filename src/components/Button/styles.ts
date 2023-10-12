@@ -3,7 +3,7 @@ import { darken } from "polished"
 import { ButtonProps } from "."
 import { css } from "styled-components"
 
-type wrapperProps = {
+export type WrapperProps = {
   hasIcon: boolean
 } & Pick<ButtonProps, "size" | "fullWidth" | "minimal">
 
@@ -47,7 +47,7 @@ const wrapperModifiers = {
   `,
 }
 
-export const Wrapper = styled.button<wrapperProps>`
+export const Wrapper = styled.button<WrapperProps>`
   ${({ theme, size, fullWidth, hasIcon, minimal }) => css`
     display: inline-flex;
     align-items: center;

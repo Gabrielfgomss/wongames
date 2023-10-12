@@ -59,11 +59,7 @@ describe("<Button />", () => {
   })
 
   it("should render a minimal version", () => {
-    renderWithTheme(
-      <Button icon={<AddShoppingCart data-testid="icon" />} minimal>
-        Buy now
-      </Button>,
-    )
+    renderWithTheme(<Button minimal>Buy now</Button>)
 
     expect(screen.getByRole("button", { name: /buy now/i })).toHaveStyle({
       background: "none",
