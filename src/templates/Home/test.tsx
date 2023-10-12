@@ -12,10 +12,10 @@ const props = {
   mostPopularHighlight: highlightMock,
   mostPopularGames: [gamesMock[0]],
   upcommingGames: [gamesMock[0]],
-  upcommingHighligth: highlightMock,
+  upcommingHighlight: highlightMock,
   upcommingMoreGames: [gamesMock[0]],
   freeGames: [gamesMock[0]],
-  freeHighligth: highlightMock,
+  freeHighlight: highlightMock,
 }
 
 describe("<Home />", () => {
@@ -33,7 +33,7 @@ describe("<Home />", () => {
       screen.getByRole("heading", { name: /most popular/i }),
     ).toBeInTheDocument()
     expect(
-      screen.getByRole("heading", { name: /upcomming/i }),
+      screen.getByRole("heading", { name: /upcoming/i }),
     ).toBeInTheDocument()
     expect(
       screen.getByRole("heading", { name: /free games/i }),
