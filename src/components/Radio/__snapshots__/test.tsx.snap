@@ -1,15 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Radio /> should render the heading 1`] = `
-<main
-  class=""
->
-  <h1>
-    Radio
-  </h1>
-</main>
-`;
-
 exports[`<Radio /> should render with label (white) 1`] = `
 .c0 {
   display: -webkit-box;
@@ -54,7 +44,7 @@ exports[`<Radio /> should render with label (white) 1`] = `
 }
 
 .c1:before {
-  content: '';
+  content: "";
   width: 0.8rem;
   height: 0.8rem;
   border-radius: 50%;

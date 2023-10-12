@@ -1,8 +1,8 @@
-import { Story, Meta } from "@storybook/react/types-6-0"
+import { StoryFn, Meta } from "@storybook/react"
 import Radio, { RadioProps } from "."
 
 export default {
-  title: "Radio",
+  title: "Form/Radio",
   component: Radio,
   parameters: {
     layout: "fullscreen",
@@ -15,7 +15,7 @@ export default {
   },
 } as Meta
 
-export const Default: Story<RadioProps> = (args) => (
+export const Default: StoryFn<RadioProps> = (args) => (
   <>
     <div style={{ padding: 10 }}>
       <Radio
