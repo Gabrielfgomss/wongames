@@ -40,7 +40,7 @@ exports[`<Checkbox /> should render with label 1`] = `
 }
 
 .c1:before {
-  content: '';
+  content: "";
   width: 0.6rem;
   height: 0.9rem;
   border: 0.2rem solid #FAFAFA;
