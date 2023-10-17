@@ -1,5 +1,6 @@
 import * as S from "./styles"
-import SlickSlider, { Settings } from "react-slick"
+import { forwardRef } from "react"
+import SlickSlider, { CustomArrowProps, Settings } from "react-slick"
 
 export type SliderSettings = Settings
 
@@ -8,10 +9,36 @@ export type SliderProps = {
   settings: SliderSettings
 }
 
-const Slider = ({ children, settings }: SliderProps) => (
+const Slider: React.ForwardRefRenderFunction<SlickSlider, SliderProps> = (
+  { children, settings }: SliderProps,
+  ref,
+) => (
   <S.Wrapper>
-    <SlickSlider {...settings}>{children}</SlickSlider>
+    <SlickSlider ref={ref} {...settings}>
+      {children}
+    </SlickSlider>
   </S.Wrapper>
 )
 
-export default Slider
+export const ArrowNext = ({
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  currentSlide,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  slideCount,
+  children,
+  ...props
+}: CustomArrowProps & { children: React.ReactNode }) => (
+  <div {...props}>{children}</div>
+)
+export const ArrowPrev = ({
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  currentSlide,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  slideCount,
+  children,
+  ...props
+}: CustomArrowProps & { children: React.ReactNode }) => (
+  <div {...props}>{children}</div>
+)
+
+export default forwardRef(Slider)

@@ -1,7 +1,7 @@
 import { ArrowBackIos as ArrowLeft } from "@styled-icons/material-outlined/ArrowBackIos"
 import { ArrowForwardIos as ArrowRight } from "@styled-icons/material-outlined/ArrowForwardIos"
 import GameCard, { GameCardProps } from "../GameCard"
-import Slider, { SliderSettings } from "../Slider"
+import Slider, { ArrowNext, ArrowPrev, SliderSettings } from "../Slider"
 
 import * as S from "./styles"
 
@@ -45,11 +45,19 @@ const settings: SliderSettings = {
       },
     },
   ],
-  nextArrow: <ArrowRight aria-label="next games" />,
-  prevArrow: <ArrowLeft aria-label="previous games" />,
+  nextArrow: (
+    <ArrowNext>
+      <ArrowRight aria-label="next games" />
+    </ArrowNext>
+  ),
+  prevArrow: (
+    <ArrowPrev>
+      <ArrowLeft aria-label="previous games" />
+    </ArrowPrev>
+  ),
 }
 
-const GameCardSlider = ({ items, color = "white" }: GameCardSliderProps) => (
+const GameCardSlider = ({ items, color = "black" }: GameCardSliderProps) => (
   <S.Wrapper color={color}>
     <Slider settings={settings}>
       {items.map((item, index) => (
