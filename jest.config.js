@@ -7,6 +7,7 @@ module.exports = {
     "!src/app/**",
     "!src/lib/registry.tsx",
     "!src/types/**",
+    "!src/pages/**/*.tsx",
     "!src/styles/**",
     "!src/**/stories.tsx",
   ],
