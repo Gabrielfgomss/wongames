@@ -10,7 +10,6 @@ import PaymentOptions, {
 import CartList, { CartListProps } from "../../components/CartList"
 import Heading from "../../components/Heading"
 import Showcase from "../../components/Showcase"
-import Base from "../../templates/Base"
 import Empty from "../../components/Empty"
 import * as S from "./styles"
 
@@ -30,7 +29,7 @@ const Cart = ({
   const handlePayment = () => ({})
 
   return (
-    <Base>
+    <>
       <Container>
         <Heading lineLeft lineColor="secondary">
           My cart
@@ -58,7 +57,7 @@ const Cart = ({
         games={recommendedGames}
         highlight={recommendedHighlight}
       />
-    </Base>
+    </>
   )
 }
 
