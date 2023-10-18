@@ -1,3 +1,5 @@
+"use client"
+
 import { useState, InputHTMLAttributes } from "react"
 
 import * as S from "./styles"
@@ -5,7 +7,6 @@ import * as S from "./styles"
 export type TextFieldProps = {
   onInput?: (value: string) => void
   label?: string
-  labelFor?: string
   initialValue?: string
   icon?: React.ReactNode
   iconPosition?: "left" | "right"
@@ -16,7 +17,7 @@ export type TextFieldProps = {
 const TextField = ({
   icon,
   label,
-  labelFor = "",
+  name,
   initialValue = "",
   onInput,
   iconPosition = "left",
@@ -35,7 +36,7 @@ const TextField = ({
 
   return (
     <S.Wrapper disabled={disabled} hasError={!!hasError}>
-      {!!label && <S.Label htmlFor={labelFor}>{label}</S.Label>}
+      {!!label && <S.Label htmlFor={name}>{label}</S.Label>}
       <S.InputWrapper>
         {!!icon && <S.Icon iconPosition={iconPosition}>{icon}</S.Icon>}
         <S.Input
@@ -44,6 +45,8 @@ const TextField = ({
           value={value}
           {...props}
           disabled={disabled}
+          name={name}
+          {...(label ? { id: name } : {})}
         />
       </S.InputWrapper>
       {!!hasError && <S.Error>{hasError}</S.Error>}
