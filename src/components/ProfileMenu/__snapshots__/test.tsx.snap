@@ -110,7 +110,7 @@ exports[`<ProfileMenu /> should render the menu 1`] = `
       class="c1"
       title="My cards"
     >
-              
+       
       <svg
         aria-hidden="true"
         class="c2"
