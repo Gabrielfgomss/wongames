@@ -77,7 +77,7 @@ exports[`<ProfileMenu /> should render the menu 1`] = `
   <a
     href="/profile/me"
   >
-    <a
+    <span
       class="c1"
       title="My profile"
     >
@@ -101,12 +101,12 @@ exports[`<ProfileMenu /> should render the menu 1`] = `
       <span>
         My profile
       </span>
-    </a>
+    </span>
   </a>
   <a
     href="/profile/cards"
   >
-    <a
+    <span
       class="c1"
       title="My cards"
     >
@@ -128,12 +128,12 @@ exports[`<ProfileMenu /> should render the menu 1`] = `
       <span>
         My cards
       </span>
-    </a>
+    </span>
   </a>
   <a
     href="/profile/orders"
   >
-    <a
+    <span
       class="c1"
       title="My orders"
     >
@@ -154,12 +154,12 @@ exports[`<ProfileMenu /> should render the menu 1`] = `
       <span>
         My orders
       </span>
-    </a>
+    </span>
   </a>
   <a
     href="/logout"
   >
-    <a
+    <span
       class="c1"
     >
       <svg
@@ -179,7 +179,7 @@ exports[`<ProfileMenu /> should render the menu 1`] = `
       <span>
         Sign out
       </span>
-    </a>
+    </span>
   </a>
 </nav>
 `;

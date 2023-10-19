@@ -67,7 +67,7 @@ export const Price = styled.div`
   `}
 `
 
-export const DownloadLink = styled.a`
+export const DownloadLink = styled.span`
   ${({ theme }) => css`
     color: ${theme.colors.primary};
     margin-left: ${theme.spacings.xxsmall};

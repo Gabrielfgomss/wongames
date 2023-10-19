@@ -191,12 +191,12 @@ exports[`<FormSignIn /> should render the form 1`] = `
             />
           </div>
         </div>
-        <a
+        <span
           class="c6"
           href="#"
         >
           Forgot your password?
-        </a>
+        </span>
         <button
           class="c7 c8"
         >

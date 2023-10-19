@@ -223,13 +223,13 @@ exports[`<PaymentOptions /> should render the heading 1`] = `
   <div
     class="c6"
   >
-    <a
+    <span
       class="c7 c8"
     >
       <span>
         Continue shopping
       </span>
-    </a>
+    </span>
     <button
       class="c7 c9"
       disabled=""

@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components"
 import { lighten } from "polished"
 
-export const ForgotPassword = styled.a`
+export const ForgotPassword = styled.span`
   ${({ theme }) => css`
     display: block;
     font-size: ${theme.font.sizes.small};

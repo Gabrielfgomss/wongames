@@ -25,7 +25,7 @@ const Highlight = ({
     <S.Content>
       <S.Title>{title}</S.Title>
       <S.SubTitle>{subtitle}</S.SubTitle>
-      <Button as="a" href={buttonLink}>
+      <Button as="span" href={buttonLink}>
         {buttonLabel}
       </Button>
     </S.Content>

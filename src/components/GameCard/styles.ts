@@ -11,7 +11,7 @@ export const Wrapper = styled.article`
   `}
 `
 
-export const ImageBox = styled.a`
+export const ImageBox = styled.span`
   min-height: 14rem;
   position: relative;
   width: 100%;
@@ -54,7 +54,7 @@ export const Content = styled.div`
   `}
 `
 
-export const Info = styled.a`
+export const Info = styled.span`
   max-width: calc(100% - 2.5rem);
   text-decoration: none;
 `
