@@ -27,3 +27,15 @@ export const Default: StoryFn<CartListProps> = (args) => (
     <CartList {...args} />
   </div>
 )
+
+export const WithButton: StoryFn<CartListProps> = (args) => (
+  <div style={{ maxWidth: 800 }}>
+    <CartList {...args} hasButton />
+  </div>
+)
+
+export const Empty: StoryFn<CartListProps> = () => (
+  <div style={{ maxWidth: 800 }}>
+    <CartList />
+  </div>
+)

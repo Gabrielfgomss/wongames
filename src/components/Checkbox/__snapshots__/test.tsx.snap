@@ -70,7 +70,10 @@ exports[`<Checkbox /> should render with label 1`] = `
 }
 
 .c2 {
+  padding-left: 0.8rem;
   color: #FAFAFA;
+  line-height: 1;
+  cursor: pointer;
 }
 
 <div
