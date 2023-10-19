@@ -49,7 +49,7 @@ export const MenuNav = styled.div`
   `}
 `
 
-export const MenuLink = styled.a`
+export const MenuLink = styled.span`
   ${({ theme }) => css`
     position: relative;
     color: ${theme.colors.white};
@@ -145,7 +145,7 @@ export const RegisterBox = styled.div`
   `}
 `
 
-export const CreateAccount = styled.a`
+export const CreateAccount = styled.span`
   ${({ theme }) => css`
     text-decoration: none;
     color: ${theme.colors.primary};

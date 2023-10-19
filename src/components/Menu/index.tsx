@@ -1,13 +1,15 @@
 import Link from "next/link"
 import { Menu2 as MenuIcon } from "@styled-icons/remix-fill/Menu2"
 import { Search as SearchIcon } from "@styled-icons/material-outlined/Search"
-import { ShoppingCart as ShoppingCartIcon } from "@styled-icons/material-outlined/ShoppingCart"
 import { Close as CloseIcon } from "@styled-icons/material-outlined/Close"
 import Logo from "../../components/Logo"
 import * as S from "./styles"
 import { useState } from "react"
 import Button from "../Button"
 import MediaMatch from "../MediaMatch"
+import CartDropdown from "../../components/CartDropdown"
+import CartIcon from "../../components/CartIcon"
+import UserDropdown from "../../components/UserDropdown"
 
 export type MenuProps = {
   userName?: string
@@ -25,7 +27,7 @@ const Menu = ({ userName }: MenuProps) => {
       </MediaMatch>
 
       <S.LogoWrapper>
-        <Link href="/" passHref>
+        <Link href="/" passHref legacyBehavior>
           <Logo hideOnMobile />
         </Link>
       </S.LogoWrapper>
@@ -35,7 +37,9 @@ const Menu = ({ userName }: MenuProps) => {
           <Link href="/" passHref legacyBehavior>
             <S.MenuLink>Home</S.MenuLink>
           </Link>
-          <S.MenuLink href="#">Explore</S.MenuLink>
+          <Link href="/games" passHref legacyBehavior>
+            <S.MenuLink>Explore</S.MenuLink>
+          </Link>
         </S.MenuNav>
       </MediaMatch>
 
@@ -45,16 +49,26 @@ const Menu = ({ userName }: MenuProps) => {
         </S.IconWrapper>
 
         <S.IconWrapper>
-          <ShoppingCartIcon aria-label="Open Shopping Cart" />
-        </S.IconWrapper>
-
-        {!userName && (
           <MediaMatch greaterThan="medium">
-            <Link href="/sign-in" passHref>
-              <Button as="a">Sign in</Button>
+            <CartDropdown />
+          </MediaMatch>
+          <MediaMatch lessThan="medium">
+            <Link href="/cart" legacyBehavior>
+              <a>
+                <CartIcon />
+              </a>
             </Link>
           </MediaMatch>
-        )}
+        </S.IconWrapper>
+        <MediaMatch greaterThan="medium">
+          {!userName ? (
+            <Link href="/sign-in" passHref legacyBehavior>
+              <Button as="span">Sign in</Button>
+            </Link>
+          ) : (
+            <UserDropdown username={userName} />
+          )}
+        </MediaMatch>
       </S.MenuGroup>
 
       <S.MenuFull aria-hidden={!isOpen} isOpen={isOpen}>
@@ -63,23 +77,29 @@ const Menu = ({ userName }: MenuProps) => {
           <Link href="/" passHref legacyBehavior>
             <S.MenuLink>Home</S.MenuLink>
           </Link>
-          <S.MenuLink href="#">Explore</S.MenuLink>
+          <Link href="/games" passHref legacyBehavior>
+            <S.MenuLink>Explore</S.MenuLink>
+          </Link>
           {!!userName && (
             <>
-              <S.MenuLink href="#">My Account</S.MenuLink>
-              <S.MenuLink href="#">Wishlist</S.MenuLink>
+              <Link href="/profile/me" passHref legacyBehavior>
+                <S.MenuLink>My profile</S.MenuLink>
+              </Link>
+              <Link href="/profile/wishlist" passHref legacyBehavior>
+                <S.MenuLink>Wishlist</S.MenuLink>
+              </Link>
             </>
           )}
         </S.MenuNav>
         {!userName && (
           <S.RegisterBox>
-            <Link href="/sign-in" passHref>
-              <Button fullWidth size="large" as="a">
+            <Link href="/sign-in" passHref legacyBehavior>
+              <Button fullWidth size="large" as="span">
                 Sign in
               </Button>
             </Link>
             <span>or</span>
-            <Link href="/sign-up" passHref>
+            <Link href="/sign-up" passHref legacyBehavior>
               <S.CreateAccount title="Sign Up">Sign Up</S.CreateAccount>
             </Link>
           </S.RegisterBox>
