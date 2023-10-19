@@ -130,14 +130,14 @@ exports[`<Banner /> should render correctly 1`] = `
          season
       </p>
     </h3>
-    <a
+    <span
       class="c5"
       href="/games/defy-death"
     >
       <span>
         Buy now
       </span>
-    </a>
+    </span>
   </div>
 </main>
 `;

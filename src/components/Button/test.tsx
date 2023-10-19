@@ -47,7 +47,7 @@ describe("<Button />", () => {
 
   it("should render Button as a link", () => {
     renderWithTheme(
-      <Button as="a" href="/link">
+      <Button as="span" href="/link">
         Buy now
       </Button>,
     )
