@@ -1,7 +1,7 @@
 import Home from "@/templates/Home"
-import bannersMock from "../components/BannerSlider/mock"
-import gamesMock from "../components/GameCardSlider/mock"
-import highlightMock from "../components/Highlight/mock"
+import bannersMock from "@/components/BannerSlider/mock"
+import gamesMock from "@/components/GameCardSlider/mock"
+import highlightMock from "@/components/Highlight/mock"
 
 // async function staticData() {
 //   // const staticData = await fetch(`https://...`, { cache: 'force-cache' })
