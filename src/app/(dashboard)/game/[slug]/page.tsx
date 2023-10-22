@@ -2,7 +2,7 @@ import Game, { GameTemplateProps } from "@/templates/Game"
 import galleryMock from "@/components/Gallery/mock"
 import gamesMock from "@/components/GameCardSlider/mock"
 import highlightMock from "@/components/Highlight/mock"
-import { QUERY_GAMES, QUERY_GAME_BY_SLUG } from "@/graphql/games"
+import { QUERY_GAMES, QUERY_GAME_BY_SLUG } from "@/graphql/queries/games"
 import { getClient } from "@/lib/client"
 import { notFound } from "next/navigation"
 
@@ -63,7 +63,6 @@ export function getProps() {
 }
 
 export default async function Page({ params }) {
-  console.log(params.slug)
   const { data } = await getClient().query({
     query: QUERY_GAME_BY_SLUG,
     variables: { slug: params?.slug },
@@ -73,6 +72,7 @@ export default async function Page({ params }) {
     return notFound()
   }
   const games = data?.games?.data.map((game) => {
+    console.log(game)
     return {
       cover: `http://localhost:1337${game?.attributes?.cover?.data?.attributes?.url}`,
       gameInfo: {
@@ -80,15 +80,19 @@ export default async function Page({ params }) {
         price: game?.attributes?.price,
         description: game?.attributes?.short_description,
       },
-      gallery: game?.attributes?.galery?.data,
+      gallery: game?.attributes?.gallery?.data.map((image) => ({
+        src: `http://localhost:1337${image.src}`,
+        label: image.label,
+      })),
       description: game?.attributes?.description,
       details: {
-        developer: game?.attributes?.data[0]?.attributes.name,
+        developer: game?.attributes?.developers?.data[0]?.attributes.name,
         releaseDate: game?.attributes?.release_date,
-        platforms: game?.attributes?.platforms.data[0]?.attributes.name,
+        platforms: game?.attributes?.platforms?.data[0]?.attributes.name,
       },
     }
   })
+  console.log(games)
   const { props }: { props: GameTemplateProps } = getProps()
-  return <Game {...props} {...games} />
+  return <Game {...props} />
 }

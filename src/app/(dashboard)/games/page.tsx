@@ -1,6 +1,6 @@
 import GamesTemplate, { GamesTemplateProps } from "@/templates/Games"
 import filterItemsMock from "@/components/ExploreSidebar/mock"
-import { QUERY_GAMES } from "@/graphql/games"
+import { QUERY_GAMES } from "@/graphql/queries/games"
 import { getClient } from "@/lib/client.js"
 
 export default async function GamesPage() {
@@ -11,10 +11,7 @@ export default async function GamesPage() {
       slug: game?.attributes.slug,
       img: `http://localhost:1337${game?.attributes?.cover?.data?.attributes?.url}`,
       developers: game?.attributes?.developers?.data[0]?.attributes?.name,
-      price: new Intl.NumberFormat("en", {
-        style: "currency",
-        currency: "USD",
-      }).format(game?.attributes.price),
+      price: game.price,
     }
   })
 

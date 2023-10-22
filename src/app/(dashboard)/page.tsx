@@ -1,15 +1,12 @@
-"use client"
-
 import Home from "@/templates/Home"
-import bannersMock from "@/components/BannerSlider/mock"
 import gamesMock from "@/components/GameCardSlider/mock"
 import highlightMock from "@/components/Highlight/mock"
-import { useQuery, gql } from "@apollo/client"
+import { QUERY_HOME } from "@/graphql/queries/home"
+import { getClient } from "@/lib/client"
 
 function dynamicData() {
   return {
     props: {
-      banners: bannersMock,
       newGames: gamesMock,
       mostPopularHighlight: highlightMock,
       mostPopularGames: gamesMock,
@@ -22,26 +19,36 @@ function dynamicData() {
   }
 }
 
-export default function Index() {
-  const { data, loading, error } = useQuery(gql`
-    query getGames {
-      games {
-        data {
-          attributes {
-            name
-          }
-        }
-      }
-    }
-  `)
-
-  if (loading) return <p>Loading...</p>
-
-  if (error) return <p>{error.message}</p>
-
-  if (data) return <p>{JSON.stringify(data, null, 2)}</p>
-
+export default async function Index() {
   const { props } = dynamicData()
+  const { data } = await getClient().query({
+    query: QUERY_HOME,
+  })
+  const banners = data.banners.data.map((banner) => {
+    return {
+      image: `http://localhost:1337${banner.attributes.image.data.attributes.url}`,
+      title: banner.attributes.title,
+      subtitle: banner.attributes.subtitle,
 
-  return <Home {...props} />
+      buttonLabel: banner.attributes.button.label,
+      buttonLink: banner.attributes.button.link,
+
+      ...(banner.attributes.ribbon && {
+        ribbon: banner.attributes.ribbon.text,
+        ribbonColor: banner.attributes.ribbon.color,
+        ribbonSize: banner.attributes.ribbon.size,
+      }),
+    }
+  })
+  const newGames = data.newGames.data.map((game) => {
+    return {
+      title: game.attributes.name,
+      slug: game.attributes.slug,
+      developer: game.attributes.developers.data[0].attributes.name,
+      img: `http://localhost:1337${game.attributes.cover?.data?.attributes.url}`,
+      price: game.attributes.price,
+    }
+  })
+  console.log(banners)
+  return <Home {...props} banners={banners} newGames={newGames} />
 }

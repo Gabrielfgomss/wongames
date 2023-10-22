@@ -9,9 +9,7 @@ export const Wrapper = styled(Container).attrs({ as: "section" })`
   ${({ theme }) => css`
     ${HeadingStyles.Wrapper},
     ${HighlightStyles.Wrapper},
-    ${GameCardSliderStyles.Wrapper} {
-      margin-bottom: ${theme.spacings.medium};
-    }
+    
     ${HighlightStyles.Wrapper} {
       ${media.lessThan("medium")`
         margin-right: calc(-${theme.grid.gutter} / 2);
