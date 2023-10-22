@@ -55,6 +55,7 @@ export const Content = styled.div`
 `
 
 export const Info = styled.span`
+  text-decoration: none;
   max-width: calc(100% - 2.5rem);
   text-decoration: none;
 `

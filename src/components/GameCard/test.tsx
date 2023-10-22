@@ -4,6 +4,7 @@ import { renderWithTheme } from "../../utils/tests/helpers"
 import theme from "../../styles/theme"
 
 const props = {
+  slug: "population-zero",
   title: "Population Zero",
   developer: "Rockstar Games",
   img: "https://source.unsplash.com/user/willianjusten/300x140",

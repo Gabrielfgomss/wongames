@@ -2,14 +2,22 @@ import Game, { GameTemplateProps } from "@/templates/Game"
 import galleryMock from "@/components/Gallery/mock"
 import gamesMock from "@/components/GameCardSlider/mock"
 import highlightMock from "@/components/Highlight/mock"
+import { QUERY_GAMES, QUERY_GAME_BY_SLUG } from "@/graphql/games"
+import { getClient } from "@/lib/client"
+import { notFound } from "next/navigation"
 
 export const dynamicParams = false
 
 export async function generateStaticParams() {
-  return [{ slug: "cyberpunk" }]
+  const { data } = await getClient().query({ query: QUERY_GAMES })
+  const paths = data?.games?.data?.map((game) => ({
+    slug: game?.attributes.slug,
+  }))
+
+  return paths
 }
 
-export async function getProps() {
+export function getProps() {
   const descriptionHTML = `
     <img src="https://items.gog.com/not_a_cp/ENG_product-page-addons-2020_yellow_on_black.png"><br>
     * Exclusive Digital Comic - Cyberpunk 2077: Big City Dreams will be available in English only.
@@ -54,7 +62,33 @@ export async function getProps() {
   }
 }
 
-export default async function Page() {
-  const { props }: { props: GameTemplateProps } = await getProps()
-  return <Game {...props} />
+export default async function Page({ params }) {
+  console.log(params.slug)
+  const { data } = await getClient().query({
+    query: QUERY_GAME_BY_SLUG,
+    variables: { slug: params?.slug },
+  })
+
+  if (!data?.games?.data.length) {
+    return notFound()
+  }
+  const games = data?.games?.data.map((game) => {
+    return {
+      cover: `http://localhost:1337${game?.attributes?.cover?.data?.attributes?.url}`,
+      gameInfo: {
+        title: game?.attributes?.name,
+        price: game?.attributes?.price,
+        description: game?.attributes?.short_description,
+      },
+      gallery: game?.attributes?.galery?.data,
+      description: game?.attributes?.description,
+      details: {
+        developer: game?.attributes?.data[0]?.attributes.name,
+        releaseDate: game?.attributes?.release_date,
+        platforms: game?.attributes?.platforms.data[0]?.attributes.name,
+      },
+    }
+  })
+  const { props }: { props: GameTemplateProps } = getProps()
+  return <Game {...props} {...games} />
 }
