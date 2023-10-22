@@ -57,6 +57,7 @@ export const MenuLink = styled.span`
     margin: 0.3rem ${theme.spacings.small} 0;
     text-decoration: none;
     text-align: center;
+    cursor: pointer;
     &:hover {
       &::after {
         content: "";
@@ -150,5 +151,6 @@ export const CreateAccount = styled.span`
     text-decoration: none;
     color: ${theme.colors.primary};
     border-bottom: 0.2rem solid ${theme.colors.primary};
+    cursor: pointer;
   `}
 `
