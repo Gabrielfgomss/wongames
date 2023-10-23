@@ -10,6 +10,8 @@ import { renderWithTheme } from "../../utils/tests/helpers"
 
 const props: GameTemplateProps = {
   cover: "bg-image.jpg",
+  upcomingTitle: "Upcoming games",
+  recommendedTitle: "You may like these games",
   gameInfo: gameInfoMock,
   gallery: galleryMock,
   description: `<h1>Custom HTML</h1>`,

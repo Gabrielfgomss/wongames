@@ -12,6 +12,7 @@ import Cart from "."
 const props = {
   items: itemsMock,
   total: "$ 430,00",
+  recommendedTitle: "You may like these games",
   cards: cardsMock,
   recommendedHighlight: highlightMock,
   recommendedGames: gamesMock,

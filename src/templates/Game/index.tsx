@@ -13,16 +13,20 @@ import * as S from "./styles"
 export type GameTemplateProps = {
   cover: string
   gameInfo: GameInfoProps
+  recommendedTitle: string
   gallery?: GalleryImageProps[]
   description: string
   details: GameDetailsProps
   upcomingGames: GameCardProps[]
   upcomingHighlight: HighlightProps
   recommendedGames: GameCardProps[]
+  upcomingTitle: string
 }
 
 const Game = ({
   cover,
+  upcomingTitle,
+  recommendedTitle,
   gameInfo,
   gallery,
   description,
@@ -49,12 +53,12 @@ const Game = ({
         <Divider />
       </S.SectionGameDetails>
       <Showcase
-        title="Upcoming"
+        title={upcomingTitle}
         games={upcomingGames}
         highlight={upcomingHighlight}
       />
 
-      <Showcase title="You may like these games" games={recommendedGames} />
+      <Showcase title={recommendedTitle} games={recommendedGames} />
     </S.Main>
   </>
 )
