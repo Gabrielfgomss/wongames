@@ -1,9 +1,19 @@
-import { gql } from "@apollo/client"
+import { SuspenseQueryHookOptions, gql } from "@apollo/client"
+import { useSuspenseQuery } from "@apollo/experimental-nextjs-app-support/ssr"
 import { GameFragment } from "../fragments/game"
 
 export const QUERY_GAMES = gql`
-  {
-    games {
+  query QueryGames(
+    $start: Int
+    $limit: Int
+    $where: GameFiltersInput
+    $sort: [String]
+  ) {
+    games(
+      pagination: { start: $start, limit: $limit }
+      filters: $where
+      sort: $sort
+    ) {
       data {
         attributes {
           ...GameFragment
@@ -73,3 +83,6 @@ export const QUERY_GAME_BY_SLUG = gql`
     }
   }
 `
+export function useQueryGames(options?: SuspenseQueryHookOptions) {
+  return useSuspenseQuery(QUERY_GAMES, options)
+}

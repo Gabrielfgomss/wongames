@@ -7,7 +7,22 @@ import { registerApolloClient } from "@apollo/experimental-nextjs-app-support/rs
 
 export const { getClient } = registerApolloClient(() => {
   return new NextSSRApolloClient({
-    cache: new NextSSRInMemoryCache(),
+    cache: new NextSSRInMemoryCache({
+      typePolicies: {
+        Query: {
+          fields: {
+            games: {
+              keyArgs: false,
+
+              merge(existing = [], incoming) {
+                console.log(existing)
+                return [...existing, ...incoming.data]
+              },
+            },
+          },
+        },
+      },
+    }),
     link: new HttpLink({
       uri: "http://localhost:1337/graphql",
     }),
