@@ -1,22 +1,9 @@
 import GamesTemplate, { GamesTemplateProps } from "@/templates/Games"
 import filterItemsMock from "@/components/ExploreSidebar/mock"
-import { QUERY_GAMES } from "@/graphql/queries/games"
-import { getClient } from "@/lib/client.js"
 
 export default async function GamesPage() {
-  const { data } = await getClient().query({ query: QUERY_GAMES })
-  const games = data?.games?.data?.map((game) => {
-    return {
-      title: game?.attributes.name,
-      slug: game?.attributes.slug,
-      img: `http://localhost:1337${game?.attributes?.cover?.data?.attributes?.url}`,
-      developers: game?.attributes?.developers?.data[0]?.attributes?.name,
-      price: game.price,
-    }
-  })
-
   const { props }: { props: GamesTemplateProps } = getProps()
-  return <GamesTemplate games={games} {...props} />
+  return <GamesTemplate {...props} />
 }
 
 export function getProps() {

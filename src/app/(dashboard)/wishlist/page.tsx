@@ -1,18 +1,22 @@
-import Wishlist, { WishlistTemplateProps } from "@/templates/Wishlist"
-import gamesMock from "@/components/GameCardSlider/mock"
-import highlightMock from "@/components/Highlight/mock"
-
-export async function getProps() {
-  return {
-    props: {
-      recommendedGames: gamesMock.slice(0, 5),
-      recommendedHighlight: highlightMock,
-      games: gamesMock,
-    },
-  }
-}
+import Wishlist from "@/templates/Wishlist"
+import { getClient } from "@/lib/client"
+import { QUERY_RECOMMENDED } from "@/graphql/queries/recommended"
+import { gamesMapper, highlightMapper } from "@/types/mappers"
 
 export default async function WishlistPage() {
-  const { props }: { props: WishlistTemplateProps } = await getProps()
-  return <Wishlist {...props} />
+  const { data } = await getClient().query({ query: QUERY_RECOMMENDED })
+  const recommendedTitle = data?.recommended?.data?.attributes.section.title
+  const recommendedGames = gamesMapper(
+    data?.recommended?.data?.attributes.section.games.data,
+  )
+  const recommendedHighlight = highlightMapper(
+    data?.recommended?.data.attributes.section.highlight,
+  )
+  return (
+    <Wishlist
+      recommendedGames={recommendedGames}
+      recommendedHighlight={recommendedHighlight}
+      recommendedTitle={recommendedTitle}
+    />
+  )
 }

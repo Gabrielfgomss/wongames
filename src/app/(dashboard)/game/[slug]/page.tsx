@@ -5,6 +5,9 @@ import highlightMock from "@/components/Highlight/mock"
 import { QUERY_GAMES, QUERY_GAME_BY_SLUG } from "@/graphql/queries/games"
 import { getClient } from "@/lib/client"
 import { notFound } from "next/navigation"
+import { QUERY_RECOMMENDED } from "@/graphql/queries/recommended"
+import { QUERY_UPCOMING } from "@/graphql/queries/upcoming"
+import { gamesMapper, highlightMapper } from "@/types/mappers"
 
 export const dynamicParams = false
 
@@ -71,8 +74,8 @@ export default async function Page({ params }) {
   if (!data?.games?.data.length) {
     return notFound()
   }
+
   const games = data?.games?.data.map((game) => {
-    console.log(game)
     return {
       cover: `http://localhost:1337${game?.attributes?.cover?.data?.attributes?.url}`,
       gameInfo: {
@@ -92,7 +95,37 @@ export default async function Page({ params }) {
       },
     }
   })
-  console.log(games)
+
+  const responseRecommended = await getClient().query({
+    query: QUERY_RECOMMENDED,
+  })
+  const recommendedTitle =
+    responseRecommended.data?.recommended?.data?.attributes.section.title
+  const recommendedGames = gamesMapper(
+    responseRecommended.data?.recommended?.data?.attributes.section.games.data,
+  )
+
+  const TODAY = new Date().toISOString().slice(0, 10)
+  const responseUpcoming = await getClient().query({
+    query: QUERY_UPCOMING,
+    variables: { date: TODAY },
+  })
+  const upcomingTitle =
+    responseUpcoming.data.showcase.data.attributes.upcomingGames.title
+  const upcomingGames = gamesMapper(responseUpcoming.data.upcomingGames.data)
+  const upcomingHighlight = highlightMapper(
+    responseUpcoming.data.showcase.data.attributes.upcomingGames.highlight,
+  )
   const { props }: { props: GameTemplateProps } = getProps()
-  return <Game {...props} />
+  return (
+    <Game
+      {...props}
+      {...games}
+      recommendedGames={recommendedGames}
+      recommendedTitle={recommendedTitle}
+      upcomingGames={upcomingGames}
+      upcomingHighlight={upcomingHighlight}
+      upcomingTitle={upcomingTitle}
+    />
+  )
 }
