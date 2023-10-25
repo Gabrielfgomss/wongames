@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<PaymentOptions /> should render the heading 1`] = `
-.c5 {
+.c4 {
   display: inline-block;
   vertical-align: middle;
   overflow: hidden;
 }
 
-.c8 {
+.c7 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -36,15 +36,15 @@ exports[`<PaymentOptions /> should render the heading 1`] = `
   color: #F231A5;
 }
 
-.c8:hover {
+.c7:hover {
   background: none;
 }
 
-.c8:hover {
+.c7:hover {
   color: #e20e8d;
 }
 
-.c9 {
+.c8 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -83,32 +83,32 @@ exports[`<PaymentOptions /> should render the heading 1`] = `
   justify-content: center;
 }
 
-.c9:hover {
+.c8:hover {
   background: linear-gradient(180deg,#e35565 0%,#d958a6 50%);
 }
 
-.c9 svg {
+.c8 svg {
   width: 1.5rem;
 }
 
-.c9 svg + span {
+.c8 svg + span {
   margin-left: 0.8rem;
 }
 
-.c9:disabled {
+.c8:disabled {
   cursor: not-allowed;
   -webkit-filter: saturate(30%);
   filter: saturate(30%);
 }
 
-.c2 {
+.c1 {
   color: #030517;
   position: relative;
   margin-bottom: 3.2rem;
   font-size: 1.6rem;
 }
 
-.c2::after {
+.c1::after {
   position: absolute;
   left: 0%;
   bottom: -1rem;
@@ -117,19 +117,15 @@ exports[`<PaymentOptions /> should render the heading 1`] = `
   border-bottom: 0.5rem solid #F231A5;
 }
 
-.c2::after {
+.c1::after {
   width: 3rem;
 }
 
 .c0 {
-  background: #FAFAFA;
-}
-
-.c1 {
   padding: 2.4rem;
 }
 
-.c6 {
+.c5 {
   background: #eee;
   color: #030517;
   font-weight: 600;
@@ -144,13 +140,13 @@ exports[`<PaymentOptions /> should render the heading 1`] = `
   align-items: center;
 }
 
-.c6 .c7 {
+.c5 .c6 {
   padding-left: 0.8rem;
   padding-right: 0.8rem;
   outline: 0;
 }
 
-.c3 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -160,7 +156,7 @@ exports[`<PaymentOptions /> should render the heading 1`] = `
   flex-direction: column;
 }
 
-.c4 {
+.c3 {
   background: #EAEAEA;
   border-radius: 0.2rem;
   color: #030517;
@@ -177,34 +173,34 @@ exports[`<PaymentOptions /> should render the heading 1`] = `
   align-items: center;
 }
 
-.c4 svg {
+.c3 svg {
   margin-left: 0.8rem;
   margin-right: 1.6rem;
   width: 2.4rem;
 }
 
-<main
-  class="c0"
+<div
+  class=""
 >
   <div
-    class="c1"
+    class="c0"
   >
     <h2
-      class="c2"
+      class="c1"
       color="black"
     >
       Payment
     </h2>
     <div
-      class="c3"
+      class="c2"
     >
       <div
-        class="c4"
+        class="c3"
         role="button"
       >
         <svg
           aria-hidden="true"
-          class="c5"
+          class="c4"
           fill="currentColor"
           focusable="false"
           height="14"
@@ -221,22 +217,22 @@ exports[`<PaymentOptions /> should render the heading 1`] = `
     </div>
   </div>
   <div
-    class="c6"
+    class="c5"
   >
     <span
-      class="c7 c8"
+      class="c6 c7"
     >
       <span>
         Continue shopping
       </span>
     </span>
     <button
-      class="c7 c9"
+      class="c6 c8"
       disabled=""
     >
       <svg
         aria-hidden="true"
-        class="c5"
+        class="c4"
         fill="currentColor"
         focusable="false"
         viewBox="0 0 24 24"
@@ -251,5 +247,5 @@ exports[`<PaymentOptions /> should render the heading 1`] = `
       </span>
     </button>
   </div>
-</main>
+</div>
 `;

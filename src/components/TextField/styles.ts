@@ -82,6 +82,12 @@ export const Icon = styled.div<Pick<TextFieldProps, "iconPosition">>`
     width: 2.2rem;
     color: ${theme.colors.gray};
     order: ${iconPosition === "right" ? 1 : 0};
+
+    &:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 ${theme.spacings.small}
+        ${theme.colors.lightGray} inset;
+      filter: none;
+    }
     & > svg {
       width: 100%;
     }
