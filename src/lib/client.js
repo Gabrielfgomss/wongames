@@ -15,7 +15,6 @@ export const { getClient } = registerApolloClient(() => {
               keyArgs: false,
 
               merge(existing = [], incoming) {
-                console.log(existing)
                 return [...existing, ...incoming.data]
               },
             },

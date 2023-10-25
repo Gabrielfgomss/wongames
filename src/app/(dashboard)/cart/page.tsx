@@ -3,7 +3,7 @@ import itemsMock from "@/components/CartList/mock"
 import cardsMock from "@/components/PaymentOptions/mock"
 import { QUERY_RECOMMENDED } from "@/graphql/queries/recommended"
 import { getClient } from "@/lib/client"
-import { gamesMapper, highlightMapper } from "@/types/mappers"
+import { gamesMapper, highlightMapper } from "@/utils/mappers"
 
 export async function getProps() {
   return {

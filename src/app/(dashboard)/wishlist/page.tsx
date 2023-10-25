@@ -1,7 +1,7 @@
 import Wishlist from "@/templates/Wishlist"
 import { getClient } from "@/lib/client"
 import { QUERY_RECOMMENDED } from "@/graphql/queries/recommended"
-import { gamesMapper, highlightMapper } from "@/types/mappers"
+import { gamesMapper, highlightMapper } from "@/utils/mappers"
 
 export default async function WishlistPage() {
   const { data } = await getClient().query({ query: QUERY_RECOMMENDED })
