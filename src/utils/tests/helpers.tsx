@@ -1,8 +1,33 @@
-import { ThemeProvider } from "styled-components";
-import { RenderResult, render } from "@testing-library/react";
+import { ReactElement } from "react"
+import { render, RenderOptions } from "@testing-library/react"
+import {
+  CartContext,
+  CartContextData,
+  CartContextDefaultValues,
+} from "../../hooks/use-cart"
 
-import theme from '../../styles/theme'
+import { ThemeProvider } from "styled-components"
+import theme from "../../styles/theme"
 
-export const renderWithTheme = (children: React.ReactNode): RenderResult => {
-    return render(<ThemeProvider theme={theme}>{children}</ThemeProvider>)
-}
+type CustomRenderProps = {
+  cartProviderProps?: CartContextData
+} & Omit<RenderOptions, "queries">
+
+const customRender = (
+  ui: ReactElement,
+  {
+    cartProviderProps = CartContextDefaultValues,
+    ...renderOptions
+  }: CustomRenderProps = {},
+) =>
+  render(
+    <ThemeProvider theme={theme}>
+      <CartContext.Provider value={cartProviderProps}>
+        {ui}
+      </CartContext.Provider>
+    </ThemeProvider>,
+    renderOptions,
+  )
+
+export * from "@testing-library/react"
+export { customRender as renderWithTheme }
