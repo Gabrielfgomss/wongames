@@ -13,6 +13,8 @@ module.exports = {
     "!src/styles/**/*.ts",
     "!src/utils/apollo.ts",
     "!src/types/**/*.d.ts",
+    "!src/graphql/**/*.ts",
+    "!src/**/mock.ts",
   ],
   setupFilesAfterEnv: ["<rootDir>/.jest/setup.ts"],
   modulePaths: ["<rootDir>/src/", "<rootDir>/.jest"],
@@ -24,4 +26,5 @@ module.exports = {
       "styled-components/dist/styled-components.browser.cjs.js",
   },
   prettierPath: null,
+  moduleDirectories: ["node_modules", "src"],
 }
