@@ -1,6 +1,5 @@
 import { screen } from "@testing-library/react"
 import { renderWithTheme } from "../../utils/tests/helpers"
-
 import cardsMock from "../../components/PaymentOptions/mock"
 import CardsList from "."
 

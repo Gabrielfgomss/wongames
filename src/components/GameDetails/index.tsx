@@ -57,7 +57,7 @@ const GameDetails = ({
         <S.Block>
           <S.Label>Platforms</S.Label>
           <S.IconsWrapper>
-            {platforms.map((icon: Platform) => (
+            {platforms?.map((icon: Platform) => (
               <S.Icon key={icon}>{platformIcons[icon]}</S.Icon>
             ))}
           </S.IconsWrapper>
@@ -77,7 +77,7 @@ const GameDetails = ({
 
         <S.Block>
           <S.Label>Genres</S.Label>
-          <S.Description>{genres.join(" / ")}</S.Description>
+          <S.Description>{genres?.join(" / ")}</S.Description>
         </S.Block>
       </S.Content>
     </S.Wrapper>
