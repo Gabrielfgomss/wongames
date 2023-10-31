@@ -13,9 +13,10 @@ import UserDropdown from "../../components/UserDropdown"
 
 export type MenuProps = {
   userName?: string | null
+  loading?: boolean
 }
 
-const Menu = ({ userName }: MenuProps) => {
+const Menu = ({ userName, loading }: MenuProps) => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -43,68 +44,75 @@ const Menu = ({ userName }: MenuProps) => {
         </S.MenuNav>
       </MediaMatch>
 
-      <S.MenuGroup>
-        <S.IconWrapper>
-          <SearchIcon aria-label="Search" />
-        </S.IconWrapper>
-
-        <S.IconWrapper>
-          <MediaMatch greaterThan="medium">
-            <CartDropdown />
-          </MediaMatch>
-          <MediaMatch lessThan="medium">
-            <Link href="/cart" legacyBehavior>
-              <a>
-                <CartIcon />
-              </a>
-            </Link>
-          </MediaMatch>
-        </S.IconWrapper>
-        <MediaMatch greaterThan="medium">
-          {!userName ? (
-            <Link href="/sign-in" passHref legacyBehavior>
-              <Button as="span">Sign in</Button>
-            </Link>
-          ) : (
-            <UserDropdown username={userName} />
-          )}
-        </MediaMatch>
-      </S.MenuGroup>
-
-      <S.MenuFull aria-hidden={!isOpen} isOpen={isOpen}>
-        <CloseIcon aria-label="Close Menu" onClick={() => setIsOpen(false)} />
-        <S.MenuNav>
-          <Link href="/" passHref legacyBehavior>
-            <S.MenuLink>Home</S.MenuLink>
-          </Link>
-          <Link href="/games" passHref legacyBehavior>
-            <S.MenuLink>Explore</S.MenuLink>
-          </Link>
-          {!!userName && (
-            <>
-              <Link href="/profile/me" passHref legacyBehavior>
-                <S.MenuLink>My profile</S.MenuLink>
+      {!loading && (
+        <>
+          <S.MenuGroup>
+            <S.IconWrapper>
+              <SearchIcon aria-label="Search" />
+            </S.IconWrapper>
+            <S.IconWrapper>
+              <MediaMatch greaterThan="medium">
+                <CartDropdown />
+              </MediaMatch>
+              <MediaMatch lessThan="medium">
+                <Link href="/cart" legacyBehavior>
+                  <a>
+                    <CartIcon />
+                  </a>
+                </Link>
+              </MediaMatch>
+            </S.IconWrapper>
+            <MediaMatch greaterThan="medium">
+              {!userName ? (
+                <Link href="/sign-in" passHref>
+                  <Button as="span">Sign in</Button>
+                </Link>
+              ) : (
+                <UserDropdown username={userName} />
+              )}
+            </MediaMatch>
+          </S.MenuGroup>
+          <S.MenuFull aria-hidden={!isOpen} isOpen={isOpen}>
+            <CloseIcon
+              aria-label="Close Menu"
+              onClick={() => setIsOpen(false)}
+            />
+            <S.MenuNav>
+              <Link href="/" passHref>
+                <S.MenuLink>Home</S.MenuLink>
               </Link>
-              <Link href="/profile/wishlist" passHref legacyBehavior>
-                <S.MenuLink>Wishlist</S.MenuLink>
+              <Link href="/games" passHref>
+                <S.MenuLink>Explore</S.MenuLink>
               </Link>
-            </>
-          )}
-        </S.MenuNav>
-        {!userName && (
-          <S.RegisterBox>
-            <Link href="/sign-in" passHref legacyBehavior>
-              <Button fullWidth size="large" as="span">
-                Sign in
-              </Button>
-            </Link>
-            <span>or</span>
-            <Link href="/sign-up" passHref legacyBehavior>
-              <S.CreateAccount title="Sign Up">Sign Up</S.CreateAccount>
-            </Link>
-          </S.RegisterBox>
-        )}
-      </S.MenuFull>
+
+              {!!userName && (
+                <>
+                  <Link href="/profile/me" passHref>
+                    <S.MenuLink>My profile</S.MenuLink>
+                  </Link>
+                  <Link href="/wishlist" passHref>
+                    <S.MenuLink>Wishlist</S.MenuLink>
+                  </Link>
+                </>
+              )}
+            </S.MenuNav>
+
+            {!userName && (
+              <S.RegisterBox>
+                <Link href="/sign-in" passHref>
+                  <Button fullWidth size="large" as="span">
+                    Sign in
+                  </Button>
+                </Link>
+                <span>or</span>
+                <Link href="/sign-up" passHref>
+                  <S.CreateAccount title="Sign Up">Sign Up</S.CreateAccount>
+                </Link>
+              </S.RegisterBox>
+            )}
+          </S.MenuFull>
+        </>
+      )}
     </S.Wrapper>
   )
 }
