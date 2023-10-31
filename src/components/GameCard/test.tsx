@@ -1,6 +1,7 @@
-import { fireEvent, screen } from "@testing-library/react"
+import { fireEvent } from "@testing-library/react"
+import "session.mock"
 import GameCard from "."
-import { renderWithTheme } from "../../utils/tests/helpers"
+import { renderWithTheme, screen } from "../../utils/tests/helpers"
 import theme from "../../styles/theme"
 
 const props = {

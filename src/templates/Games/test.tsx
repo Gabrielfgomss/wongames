@@ -1,4 +1,5 @@
 import { screen } from "@testing-library/react"
+import "session.mock"
 import { MockedProvider } from "@apollo/client/testing"
 import { renderWithTheme } from "../../utils/tests/helpers"
 import filterItemsMock from "../../components/ExploreSidebar/mock"
