@@ -1,5 +1,5 @@
 import Home from "@/templates/Home"
-import { QUERY_HOME } from "@/graphql/queries/home"
+import { QUERY_HOME } from "../../graphql/queries/home"
 import { getClient } from "@/lib/client"
 import { gamesMapper, highlightMapper } from "@/utils/mappers"
 

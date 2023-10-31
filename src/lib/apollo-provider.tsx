@@ -1,50 +1,14 @@
 "use client"
 
-import { ApolloLink, HttpLink } from "@apollo/client"
-import {
-  NextSSRApolloClient,
-  ApolloNextAppProvider,
-  NextSSRInMemoryCache,
-  SSRMultipartLink,
-} from "@apollo/experimental-nextjs-app-support/ssr"
-import { PropsWithChildren } from "react"
+import { ApolloNextAppProvider } from "@apollo/experimental-nextjs-app-support/ssr"
+import { useSession } from "next-auth/react"
+import { initializeApollo } from "./apollo-client"
 
-function makeClient() {
-  const httpLink = new HttpLink({
-    uri: "http://localhost:1337/graphql",
-  })
-
-  return new NextSSRApolloClient({
-    cache: new NextSSRInMemoryCache({
-      typePolicies: {
-        GameEntityResponseCollection: {
-          fields: {
-            games: {
-              keyArgs: false,
-
-              merge(existing = [], incoming) {
-                return [...existing, ...incoming.data]
-              },
-            },
-          },
-        },
-      },
-    }),
-    link:
-      typeof window === "undefined"
-        ? ApolloLink.from([
-            new SSRMultipartLink({
-              stripDefer: true,
-            }),
-            httpLink,
-          ])
-        : httpLink,
-  })
-}
-
-export function ApolloWrapper({ children }: PropsWithChildren) {
+export function ApolloWrapper({ children }: { children: React.ReactNode }) {
+  const session = useSession()
+  const client = initializeApollo(session.data?.user?.jwt)
   return (
-    <ApolloNextAppProvider makeClient={makeClient}>
+    <ApolloNextAppProvider makeClient={() => client}>
       {children}
     </ApolloNextAppProvider>
   )

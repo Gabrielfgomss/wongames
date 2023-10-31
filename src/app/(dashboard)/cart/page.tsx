@@ -1,7 +1,7 @@
 import Cart from "@/templates/Cart"
 import itemsMock from "@/components/CartList/mock"
 import cardsMock from "@/components/PaymentOptions/mock"
-import { QUERY_RECOMMENDED } from "@/graphql/queries/recommended"
+import { QUERY_RECOMMENDED } from "../../../graphql/queries/recommended"
 import { getClient } from "@/lib/client"
 import { gamesMapper, highlightMapper } from "@/utils/mappers"
 

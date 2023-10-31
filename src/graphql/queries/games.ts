@@ -1,4 +1,4 @@
-import { SuspenseQueryHookOptions, gql } from "@apollo/client"
+import { QueryHookOptions, gql } from "@apollo/client"
 import { useQuery } from "@apollo/experimental-nextjs-app-support/ssr"
 import { GameFragment } from "../fragments/game"
 
@@ -85,6 +85,6 @@ export const QUERY_GAME_BY_SLUG = gql`
     }
   }
 `
-export function useQueryGames(options?: SuspenseQueryHookOptions) {
+export function useQueryGames(options?: QueryHookOptions) {
   return useQuery(QUERY_GAMES, options)
 }

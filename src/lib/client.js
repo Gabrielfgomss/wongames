@@ -4,6 +4,15 @@ import {
   NextSSRApolloClient,
 } from "@apollo/experimental-nextjs-app-support/ssr"
 import { registerApolloClient } from "@apollo/experimental-nextjs-app-support/rsc"
+import { initializeApollo } from "./apollo-client"
+
+export const initializeApolloServer = (jwt) => {
+  const { getClient } = registerApolloClient(() => {
+    return initializeApollo(jwt)
+  })
+
+  return getClient
+}
 
 export const { getClient } = registerApolloClient(() => {
   return new NextSSRApolloClient({

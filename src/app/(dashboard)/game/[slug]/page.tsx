@@ -1,9 +1,12 @@
 import Game from "@/templates/Game"
-import { QUERY_GAMES, QUERY_GAME_BY_SLUG } from "@/graphql/queries/games"
+import {
+  QUERY_GAMES,
+  QUERY_GAME_BY_SLUG,
+} from "../../../../graphql/queries/games"
 import { getClient } from "@/lib/client"
 import { notFound } from "next/navigation"
-import { QUERY_RECOMMENDED } from "@/graphql/queries/recommended"
-import { QUERY_UPCOMING } from "@/graphql/queries/upcoming"
+import { QUERY_RECOMMENDED } from "../../../../graphql/queries/recommended"
+import { QUERY_UPCOMING } from "../../../../graphql/queries/upcoming"
 import { gamesMapper, highlightMapper } from "@/utils/mappers"
 
 export const dynamicParams = true

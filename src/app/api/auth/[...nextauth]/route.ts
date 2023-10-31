@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 
-const authOptions = {
+export const authOptions = {
   pages: {
     signIn: "/sign-in",
   },
@@ -35,26 +36,32 @@ const authOptions = {
       },
     }),
   ],
+  session: {
+    jwt: true,
+  },
+  jwt: {
+    signingKey: { kty: "oct", kid: "--", alg: "HS256", k: "--" },
+    verificationOptions: {
+      algorithms: ["HS256"],
+    },
+  },
   callbacks: {
-    session: async ({ session, user }) => {
-      session.jwt = user.jwt
-      session.id = user.id
+    async signIn({ user }) {
+      return user
+    },
+    async session({ session, token }) {
+      session.user = token.user
 
       return session
     },
-    jwt: async ({ token, user }) => {
-      if (user) {
-        token.id = user.id
-        token.email = user.email
-        token.name = user.username
-        token.jwt = user.jwt
-      }
+    async jwt({ token, user, account, profile, isNewUser }) {
+      if (user) token.user = user
       return token
     },
   },
 }
 
-const handler = NextAuth({
+export const handler = NextAuth({
   ...authOptions,
 })
 
