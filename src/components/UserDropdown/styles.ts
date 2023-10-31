@@ -21,6 +21,7 @@ export const Link = styled.span`
   ${({ theme }) => css`
     display: flex;
     align-items: center;
+    cursor: pointer;
     text-decoration: none;
     background: ${theme.colors.white};
     color: ${theme.colors.black};
